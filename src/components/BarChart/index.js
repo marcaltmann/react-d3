@@ -51,34 +51,25 @@ class BarChart extends Component {
       .attr('transform', 'translate(250, 260)')
       .call(xAxis);
 
-    select(node)
-      .selectAll('rect')
-      .data(this.props.data)
-      .enter()
-      .append('rect')
-
-    select(node)
-      .selectAll('rect')
-      .data(this.props.data)
-      .exit()
-      .remove()
-
-    select(node)
-      .selectAll('rect')
-      .data(this.props.data)
-      .style('fill', '#537492')
-      .style('stroke', 'black')
-      .style('stroke-width', '2px')
-      .attr('x', 250)
-      .attr('y', (d, i) => i * 25 + 5)
-      .attr('height', 20)
-      .attr('width', d => xScale(d.value))
   }
 
   render() {
-    return <svg
-      ref={node => this.node = node} width={500} height={300}>
-    </svg>
+    const dataMax = max(this.props.data, d => d.value)
+    const xScale = scaleLinear()
+      .domain([0, dataMax])
+      .range([0, this.props.size[0]])
+
+    const rects = this.props.data.map((d, i) => {
+      return (
+        <rect className="bar-chart__bar" key={i} x={250} y={i * 25 + 5} width={xScale(d.value)} height={20} />
+      )
+    });
+
+    return (
+      <svg className="bar-chart" ref={node => this.node = node} width={500} height={300}>
+        {rects}
+      </svg>
+    );
   }
 }
 
