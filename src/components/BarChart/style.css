@@ -2,4 +2,36 @@
   fill: #537492;
   stroke: black;
   stroke-width: 2px;
+
+  transition: 250ms;
+}
+
+.bar-chart__bar:hover {
+  fill: #7394b2;
+  cursor: pointer;
+}
+
+.bar-chart__bar--selected {
+  fill: indianred;
+}
+
+.bar-chart__bar--selected:hover {
+  fill: lightcoral;
+}
+
+text, button {
+  user-select: none;
+}
+
+container {
+  position: relative;
+}
+
+aside {
+  position: absolute;
+  right: 2em;
+  top: 2em;
+  padding: 1em;
+  border: 1px solid black;
+  border-radius: 0.5em;
 }

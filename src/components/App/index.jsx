@@ -24,7 +24,7 @@ class App extends Component {
     this.getData = this.getData.bind(this)
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.getData();
   }
 
@@ -37,6 +37,7 @@ class App extends Component {
       throw new Error('Network response not ok.');
     })
     .then((json) => {
+      //console.log(json)
       this.setState({
         data: transformData(json),
       });
