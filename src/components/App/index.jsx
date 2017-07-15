@@ -37,7 +37,7 @@ class App extends Component {
       throw new Error('Network response not ok.');
     })
     .then((json) => {
-      //console.log(json)
+      console.log(json)
       this.setState({
         data: transformData(json),
       });
